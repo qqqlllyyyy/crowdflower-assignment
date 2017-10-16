@@ -1,0 +1,81 @@
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f5f7f9;
+}
+
+nav {
+  background-color: #34404f;
+}
+
+header .brand-logo {
+  margin-left: 15px;
+}
+
+.container h4 {
+  display: inline-block;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.container .top-btn {
+  float: right;
+  margin-top: 22px;
+}
+
+.btn {
+  /*padding-top: 0.2rem;*/
+  padding: 0.2rem 1rem 0 1rem;
+}
+
+a {
+  cursor: pointer;
+}
+
+.m-l-2 {
+  margin-left: 10px;
+}
+.float-right {
+  float: right;
+}
+.gray-link {
+  color: #90a0b2;
+  transition: 0.2s all 0s ease;
+}
+.gray-link:hover {
+  color: #34404f;
+}
+.input-large {
+  margin-top: 10px !important;
+  font-size: 22px !important;
+}
+
+.css-1vm9g5e {
+  width: 500px !important;
+}
+
+/**------------**/
+
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
