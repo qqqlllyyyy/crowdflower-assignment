@@ -1,12 +1,35 @@
 
 # CrowdFlower Assignment
 
+A small programming assignment to manage tasks.
+
+#### How to Use
+
+Download or clone the project and install modules to run the app:
+
 ```
-npm install --save redux react-redux redux-thunk react-router-dom axios materialize-css react-dragula react-draggable react-alert
+git clone https://github.com/qqqlllyyyy/crowdflower-assignment
+cd crowdflower-assignment
+npm install
+npm start
 ```
 
-npm install -g mocha
-npm install --save chai mocha-loader react-addons-test-utils jsdom expect fetch-mock
+#### Additional Modules
 
-npm install --save enzyme react-test-renderer enzyme-adapter-react-16
-yarn add enzyme react-test-renderer
+* redux
+* react-redux
+* redux-thunk
+* react-router-dom
+* axios
+* materialize-css
+* react-dragula
+* react-alert
+* enzyme
+* react-test-renderer
+* enzyme-adapter-react-16
+
+#### Select ScreenShots
+
+![01](./src/img/01.png "01")
+
+![02](./src/img/02.png "02")
