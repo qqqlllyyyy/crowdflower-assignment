@@ -9,10 +9,7 @@ import {
   saveTasks,
   updateTask
 } from "../actions";
-
 import TaskList from "./tasks/TaskList";
-
-// import Dragula from "react-dragula";
 
 export class Dashboard extends Component {
   alertOptions = {
@@ -38,7 +35,11 @@ export class Dashboard extends Component {
     this.state = { modified: false };
   }
   componentDidMount() {
-    this.props.fetchTasks();
+    this.props.fetchTasks().then(res => {
+      if (!res) {
+        this.showAlert("error", this.props.errors);
+      }
+    });
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ tasks: nextProps.tasks });
@@ -47,6 +48,30 @@ export class Dashboard extends Component {
   //--------------------------------------------------------------------------
   // Other Helper Methods
   //--------------------------------------------------------------------------
+  renderButtons() {
+    if (
+      this.props.errors === null ||
+      (this.props.tasks && this.props.tasks.length > 0)
+    ) {
+      return (
+        <span>
+          <button
+            className="btn top-btn m-l-2"
+            onClick={this.saveTasks.bind(this)}
+            disabled={!this.state.modified}
+          >
+            <i className="material-icons left">save</i>Save
+          </button>
+          <button
+            onClick={this.addTask.bind(this)}
+            className="btn top-btn red lighten-1 m-l-2"
+          >
+            <i className="material-icons left">add</i>Add Task
+          </button>
+        </span>
+      );
+    }
+  }
   enableSaveBtn(status = true) {
     this.setState({ modified: status });
   }
@@ -81,29 +106,11 @@ export class Dashboard extends Component {
   // Render to ReactDOM
   //--------------------------------------------------------------------------
   render() {
-    console.log(this.props.tasks);
-    if (this.props.errors !== null) {
-      this.showAlert("error", this.props.errors);
-    }
-
     return (
       <div className="container container-main">
         <h4>Tasks</h4>
         <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
-        <button
-          className="btn top-btn m-l-2"
-          onClick={this.saveTasks.bind(this)}
-          disabled={!this.state.modified}
-        >
-          <i className="material-icons left">save</i>Save
-        </button>
-        <button
-          onClick={this.addTask.bind(this)}
-          className="btn top-btn red lighten-1 m-l-2"
-        >
-          <i className="material-icons left">add</i>Add Task
-        </button>
-
+        {this.renderButtons()}
         <TaskList
           removeTask={this.removeTask.bind(this)}
           enableSaveBtn={this.enableSaveBtn.bind(this)}

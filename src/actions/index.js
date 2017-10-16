@@ -8,11 +8,13 @@ export const fetchTasks = () => async dispatch => {
       `http://cfassignment.herokuapp.com/${USERNAME}/tasks`
     );
     dispatch({ type: TYPES.FETCH_TASKS_SUCCESS, payload: res.data });
+    return true;
   } catch (e) {
     dispatch({
       type: TYPES.FETCH_TASKS_FAIL,
       payload: "Error: Request failed when fetching data. Please refresh."
     });
+    return false;
   }
 };
 
@@ -41,7 +43,6 @@ export const saveTasks = tasks => async dispatch => {
 
 // Add Task
 export function addTask(tasks) {
-  // console.log(tasks);
   tasks.unshift({
     _id: tasks.length + 1,
     title: "New Task",
@@ -49,13 +50,12 @@ export function addTask(tasks) {
     hidden: false,
     timeUpdated: new Date().toLocaleDateString()
   });
-
   // Update _id
   for (let i = 0; i < tasks.length; i++) {
     tasks[i]._id = i + 1;
   }
   return {
-    type: TYPES.ADD_TASK,
+    type: TYPES.UPDATE_TASK,
     payload: tasks
   };
 }
@@ -69,7 +69,7 @@ export function removeTask(tasks, _id) {
     tasks[i]._id = i + 1;
   }
   return {
-    type: TYPES.REMOVE_TASK,
+    type: TYPES.UPDATE_TASK,
     payload: tasks
   };
 }
@@ -113,7 +113,7 @@ export function dragTask(taskHTML, tasks, endPos) {
   }
 
   return {
-    type: TYPES.DRAG_TASK,
+    type: TYPES.UPDATE_TASK,
     payload: newTasks
   };
 }

@@ -10,19 +10,16 @@ class Header extends Component {
       <header>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo">
+            <Link to="/" className="brand-logo">
               <i className="material-icons">check_box</i>
               CF Tasks
-            </a>
+            </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <a href="sass.html">Sass</a>
+                <Link to="/">Dashboard</Link>
               </li>
               <li>
-                <a href="badges.html">Components</a>
-              </li>
-              <li>
-                <a href="collapsible.html">JavaScript</a>
+                <Link to="/help">Help</Link>
               </li>
             </ul>
           </div>

@@ -2,26 +2,25 @@ import React, { Component } from "react";
 import Dragula from "react-dragula";
 
 class TaskList extends Component {
+  //--------------------------------------------------------------------------
+  // Constructor and Life-cycle Methods
+  //--------------------------------------------------------------------------
   constructor(props) {
     super(props);
     this.state = { tasks: [] };
   }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.tasks !== null && nextProps.tasks !== "Error") {
-      // let tasks = nextProps.tasks.map(task => {
-      //   task["hidden"] = true;
-      //   return task;
-      // });
       this.setState({ tasks: nextProps.tasks });
     }
   }
 
-  // Remove a task
+  //--------------------------------------------------------------------------
+  // Other Helper Methods
+  //--------------------------------------------------------------------------
   removeTask(_id) {
     this.props.removeTask(_id);
   }
-  // Edit task
   editTask(_id, show = false) {
     let tasks = this.state.tasks.map(task => {
       if (task._id === _id) {
@@ -31,7 +30,6 @@ class TaskList extends Component {
     });
     this.setState({ tasks: tasks });
   }
-
   renderTasks() {
     if (this.props.tasks === null) {
       return <p>No task is loaded.</p>;
@@ -107,7 +105,6 @@ class TaskList extends Component {
       });
     }
   }
-
   dragulaDecorator = componentBackingInstance => {
     if (componentBackingInstance) {
       let options = {};
@@ -121,6 +118,9 @@ class TaskList extends Component {
     }
   };
 
+  //--------------------------------------------------------------------------
+  // Render to ReactDOM
+  //--------------------------------------------------------------------------
   render() {
     return (
       <div className="" ref={this.dragulaDecorator}>
@@ -129,12 +129,5 @@ class TaskList extends Component {
     );
   }
 }
-
-// // Destructured `state`
-// function mapStateToProps(state) {
-//   return { tasks: state.tasks };
-// }
-//
-// export default connect(mapStateToProps, { fetchTasks })(TaskList);
 
 export default TaskList;

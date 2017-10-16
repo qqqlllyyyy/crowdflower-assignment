@@ -11,11 +11,7 @@ export default function(state = null, action) {
       return null;
     case TYPES.SAVE_TASKS_FAIL:
       return action.payload.errors;
-    case TYPES.ADD_TASK:
-      return null;
-    case TYPES.REMOVE_TASK:
-      return null;
-    case TYPES.DRAG_TASK:
+    case TYPES.UPDATE_TASK:
       return null;
     default:
       return state;

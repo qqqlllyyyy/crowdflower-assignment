@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import Header from "./Header";
 import Dashboard from "./Dashboard";
+import Help from "./Help";
 
 class App extends Component {
   // componentDidMount() {
@@ -15,6 +16,7 @@ class App extends Component {
         <div>
           <Header />
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/help" component={Help} />
         </div>
       </BrowserRouter>
     );
